@@ -7,7 +7,8 @@ requirements = [
     "pythainlp>=2.0",
     "requests",
     "xmltodict",
-    "pytz"
+    "pytz",
+    "tqdm"
 ]
 
 setup(
