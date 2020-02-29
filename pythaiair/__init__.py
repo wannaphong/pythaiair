@@ -32,7 +32,7 @@ class Air(object):
         self._temp2 = self._html.split(" var location")[1:]
         self._temp3 = []
         for self._i in self._temp2:
-            self._temp3.append(self._i.split("google.maps.event.addListener(marker1aerosure, 'click', function() {")[0])
+            self._temp3.append(self._i.split("google.maps.event.addListener(")[0])
         for self.i in tqdm(self._temp3):
             self.d_temp = self.data_temp()
             self.temp1= self.i.split("new google.maps.LatLng(")
