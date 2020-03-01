@@ -13,7 +13,7 @@ requirements = [
 
 setup(
     name = "pythaiair",
-    version = "0.1dev0",
+    version = "0.1",
     description = "Thai Air Quality library",
     install_requires = requirements,
     long_description = readme,
@@ -24,7 +24,9 @@ setup(
     python_requires = ">=3.6",
     license = "Apache Software License 2.0",
     classifiers = [
-        "Programming Language :: Python :: 3",
-        "License :: OSI Approved :: Apache Software License"
+        "Programming Language :: Python :: 3 :: Only",
+        "Development Status :: 4 - Beta",
+        "License :: OSI Approved :: Apache Software License",
+        "Operating System :: OS Independent"
     ]
 )
