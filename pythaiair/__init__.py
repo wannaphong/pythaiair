@@ -4,11 +4,31 @@ import pytz
 import xmltodict
 from tqdm import tqdm
 import json
+from collections import defaultdict
+from pythainlp.corpus.common import provinces
+province = list(provinces()) # รับรายชื่อจังหวัดทั้งหมดในประเทศไทย
+province[province.index("กรุงเทพมหานคร")]="กรุงเทพฯ"
 
 tz = pytz.timezone('Asia/Bangkok')
+def aqi(m:float)->str:
+  t = ""
+  if m >= 201:
+    t = "มีผลกระทบต่อสุขภาพ"
+  elif m >= 101:
+    t = "เริ่มมีผลกระทบต่อสุขภาพ"
+  elif m >= 51:
+    t = "ปานกลาง"
+  elif m >= 26:
+    t = "คุณภาพอากาศดี"
+  else:
+    t = "คุณภาพอากาศดีมาก"
+  return t
+
 class Air(object):
     def __init__(self):
         self._data = []
+        self.data_by_province = defaultdict(list)
+        self.update_data()
     
     def data_temp(self):
         return {
@@ -127,5 +147,14 @@ class Air(object):
         self._nrct()
         self._air4thai()
         self._bangkok()
+        self.data_by_province = defaultdict(list)
+        self.update_data_provinces()
+    def update_data_provinces(self):
+        for i in province:
+            for j in self._data:
+                if i in j['title'] or i in j['time']:
+                    self.data_by_province[i].append(j)
+    def get_data_provinces(self):
+        return self.data_by_province
     def get_data(self):
         return self._data
