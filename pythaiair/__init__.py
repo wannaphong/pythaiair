@@ -144,6 +144,7 @@ class Air(object):
         self.d = datetime.now(tz).strftime('%Y-%m-%d')
         return self.d in time
     def update_data(self):
+        self._data = []
         self._nrct()
         self._air4thai()
         self._bangkok()
