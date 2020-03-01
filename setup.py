@@ -13,7 +13,7 @@ requirements = [
 
 setup(
     name = "pythaiair",
-    version = "0.1",
+    version = "0.2",
     description = "Thai Air Quality library",
     install_requires = requirements,
     long_description = readme,
