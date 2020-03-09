@@ -18,6 +18,7 @@ setup(
     install_requires = requirements,
     long_description = readme,
     long_description_content_type = "text/markdown",
+    test_suite = "test",
     author = "Wannaphong Phatthiyaphaibun",
     url = "https://github.com/wannaphong/pythaiair",
     packages = find_packages(),
