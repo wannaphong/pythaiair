@@ -46,7 +46,7 @@ class Air(object):
             'source' : ''
         }
     def _nrct(self) -> None:
-        self._url = "http://pm2_5.nrct.go.th/map"
+        self._url = "https://pm2_5.nrct.go.th/"
         self._r = requests.get(self._url)
         self._html = self._r.text.strip('\n')
         self._temp2 = self._html.split(" var location")[1:]
@@ -145,9 +145,18 @@ class Air(object):
         return self.d in time
     def update_data(self):
         self._data = []
-        self._nrct()
-        self._air4thai()
-        self._bangkok()
+        try:
+            self._nrct()
+        except:
+            print("nrct not working")
+        try:
+            self._air4thai()
+        except:
+            print("Air4Thai Not working")
+        try:
+            self._bangkok()
+        except:
+            print("bangkokairquality not working")
         self.data_by_province = defaultdict(list)
         self.update_data_provinces()
     def update_data_provinces(self):
